@@ -1,6 +1,19 @@
+using HotChocolateGraphQLSimpleServer.GraphQL;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Add Hot Chocolate GraphQL server and define the root query type
+builder.Services
+        .AddGraphQLServer()
+        .AddQueryType<Query>();
+
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+// Attach and define the GraphQL endpoint at default /graphql route
+app.UseRouting()
+   .UseEndpoints(endpoints =>
+   {
+       endpoints.MapGraphQL();
+   });
 
 app.Run();
