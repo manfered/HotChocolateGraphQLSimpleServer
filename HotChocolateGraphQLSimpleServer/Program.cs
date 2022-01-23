@@ -7,7 +7,8 @@ builder.Services
         .AddGraphQLServer()
         .AddDefaultTransactionScopeHandler() // create transaction scopes for mutation requests to wrap these in a transaction that we can control
         .AddQueryType<Query>()
-        .AddMutationType<Mutation>();
+        .AddMutationType<Mutation>()
+        .AddMutationConventions(applyToAllMutations: true);
 
 var app = builder.Build();
 

@@ -12,9 +12,9 @@ public class Mutation
     /// </summary>
     /// <param name="post"></param>
     /// <returns></returns>
-    public async Task<Post> CreatePost(Post input) => await Task.Run(() => new Post
+    public async Task<Post> CreatePost(string title, string body) => await Task.Run(() => new Post
     {
-        Title = input.Title,
-        Body = input.Body
+        Title = title,
+        Body = body
     });
 }
